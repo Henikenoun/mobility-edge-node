@@ -1,0 +1,20 @@
+.map-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  
+  #map {
+    flex: 1;
+    height: 100vh;
+  }
+  
+  .info-card {
+    width: 300px;
+    background: #ffffffee;
+    padding: 15px;
+    border-left: 2px solid #ddd;
+    font-family: sans-serif;
+    overflow-y: auto;
+  }
+  

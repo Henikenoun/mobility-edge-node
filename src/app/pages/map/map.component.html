@@ -1,0 +1,19 @@
+<div class="map-container">
+  <div id="map"></div>
+
+<div class="info-card" *ngIf="currentInstanceData">
+  <h3>📍 Données du nœud principal</h3>
+  <p><strong>Node:</strong> {{ currentInstanceData.Node_ID }}</p>
+  <p><strong>Position réelle:</strong> {{ currentInstanceData.Latitude }}, {{ currentInstanceData.Longitude }}</p>
+  <p><strong>Position prédite:</strong> {{ currentInstanceData.predicted_lat }}, {{ currentInstanceData.predicted_lon }}</p>
+  <p><strong>Vitesse:</strong> {{ currentInstanceData.Speed_km_h | number:'1.1-1' }} km/h</p>
+  <p><strong>Direction:</strong> {{ currentInstanceData.Direction | number:'1.0-0' }}°</p>
+  <p><strong>Obstacle:</strong> {{ currentInstanceData.Obstacle_Type || 'Aucun' }}</p>
+  <p><strong>Trafic:</strong> {{ currentInstanceData.Traffic_Density < 0 ? currentInstanceData.Traffic_Density * -1 : currentInstanceData.Traffic_Density | number:'1.0-1' }}%</p>
+  <p><strong>Exit Probability:</strong> {{ currentInstanceData.exit_probability * 100 | number:'1.0-1' }}%</p>
+  <p><strong>Optimal Node 1:</strong> {{ currentInstanceData.optimal_node_1 }}</p>
+  <p><strong>Optimal Node 2:</strong> {{ currentInstanceData.optimal_node_2 }}</p>
+  <p *ngIf="currentInstanceData.outside_zone" style="color: red;"><strong>⚠️ Le nœud principal est hors de sa zone de couverture.</strong></p>
+</div>
+
+</div>

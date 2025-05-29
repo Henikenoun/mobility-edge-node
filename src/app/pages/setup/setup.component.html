@@ -1,0 +1,81 @@
+<div class="setup-container">
+  <!-- Étape 1 : Choix zone -->
+  <div class="setup-card" *ngIf="step === 1">
+    <h2>Type de zone</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Type de zone</mat-label>
+      <mat-select [(ngModel)]="zoneType">
+        <mat-option value="rectangle">Rectangulaire</mat-option>
+        <mat-option value="cercle">Circulaire</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="goToNodeSelection()">Suivant</button>
+  </div>
+
+  <!-- Étape 2 : Sélection des nœuds -->
+  <div class="setup-card" *ngIf="step === 2">
+    <h2>Sélectionner les nœuds à simuler</h2>
+
+    <mat-selection-list>
+      <mat-list-option *ngFor="let node of allNodes"
+                       [value]="node"
+                       [(selected)]="node.selected"
+                       (selectionChange)="onNodeSelectionChange(node, $event)">
+        {{ node.name }}
+      </mat-list-option>
+    </mat-selection-list>
+
+    <button mat-raised-button color="primary" (click)="goToNodeConfiguration()">Configurer</button>
+  </div>
+
+  <!-- Étape 3 : Configuration d’un nœud à la fois -->
+  <div class="setup-card" *ngIf="step === 3">
+    <h2>Configuration du nœud ({{ currentNodeIndex + 1 }} / {{ selectedNodes.length }})</h2>
+
+    <div *ngIf="selectedNodes.length > 0">
+      <h3>{{ selectedNodes[currentNodeIndex].name }}</h3>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Rayon de couverture (km)</mat-label>
+        <input matInput type="number" [(ngModel)]="selectedNodes[currentNodeIndex].coverageRadius" min="0.1" value="0.1" step="0.1">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Latitude du centre</mat-label>
+        <input matInput type="number" [(ngModel)]="selectedNodes[currentNodeIndex].zoneCenterLat">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Longitude du centre</mat-label>
+        <input matInput type="number" [(ngModel)]="selectedNodes[currentNodeIndex].zoneCenterLon">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Rayon de la zone (km)</mat-label>
+        <input matInput type="number" [(ngModel)]="selectedNodes[currentNodeIndex].zoneRadius" min="0.1" value="0.5" step="0.1">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="nextNodeConfiguration()">
+        {{ currentNodeIndex < selectedNodes.length - 1 ? 'Suivant' : 'Continuer' }}
+      </button>
+    </div>
+  </div>
+
+
+  <!-- Étape 4 : Choix du node principal -->
+  <div class="setup-card" *ngIf="step === 4">
+    <h2>Sélectionner le nœud principal (Device)</h2>
+
+    <mat-radio-group [(ngModel)]="mainNodeId">
+      <mat-radio-button *ngFor="let node of selectedNodes" [value]="node.id">
+        {{ node.name }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <button mat-raised-button color="primary" (click)="finishSetup()" [disabled]="!mainNodeId">
+      Démarrer la simulation
+    </button>
+  </div>
+</div>

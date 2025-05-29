@@ -1,0 +1,48 @@
+.setup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f4f6f8;
+}
+
+.setup-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 32px;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2, h3 {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 24px;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+
+  mat-radio-button {
+    display: block;
+    text-align: left;
+    margin: 10px 0;
+  }
+
+  button {
+    margin-top: 20px;
+    width: 100%;
+    font-weight: bold;
+    background-color: #3f51b5;
+    color: #fff;
+    transition: 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #303f9f;
+  }
+}
