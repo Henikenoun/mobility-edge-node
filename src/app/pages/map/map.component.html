@@ -1,19 +1,75 @@
 <div class="map-container">
   <div id="map"></div>
 
-<div class="info-card" *ngIf="currentInstanceData">
-  <h3>📍 Données du nœud principal</h3>
-  <p><strong>Node:</strong> {{ currentInstanceData.Node_ID }}</p>
-  <p><strong>Position réelle:</strong> {{ currentInstanceData.Latitude }}, {{ currentInstanceData.Longitude }}</p>
-  <p><strong>Position prédite:</strong> {{ currentInstanceData.predicted_lat }}, {{ currentInstanceData.predicted_lon }}</p>
-  <p><strong>Vitesse:</strong> {{ currentInstanceData.Speed_km_h | number:'1.1-1' }} km/h</p>
-  <p><strong>Direction:</strong> {{ currentInstanceData.Direction | number:'1.0-0' }}°</p>
-  <p><strong>Obstacle:</strong> {{ currentInstanceData.Obstacle_Type || 'Aucun' }}</p>
-  <p><strong>Trafic:</strong> {{ currentInstanceData.Traffic_Density < 0 ? currentInstanceData.Traffic_Density * -1 : currentInstanceData.Traffic_Density | number:'1.0-1' }}%</p>
-  <p><strong>Exit Probability:</strong> {{ currentInstanceData.exit_probability * 100 | number:'1.0-1' }}%</p>
-  <p><strong>Optimal Node 1:</strong> {{ currentInstanceData.optimal_node_1 }}</p>
-  <p><strong>Optimal Node 2:</strong> {{ currentInstanceData.optimal_node_2 }}</p>
-  <p *ngIf="currentInstanceData.outside_zone" style="color: red;"><strong>⚠️ Le nœud principal est hors de sa zone de couverture.</strong></p>
+  <div class="info-card" *ngIf="currentInstanceData">
+    <h3>
+      <span style="vertical-align:middle;">🚗</span>
+      Données du nœud principal
+    </h3>
+    <p><strong>Node:</strong> <span class="value">{{ currentInstanceData.Node_ID }}</span></p>
+    <p><strong>Position réelle:</strong> <span class="value">📍 {{ currentInstanceData.Latitude | number:'1.4-4' }}, {{
+        currentInstanceData.Longitude | number:'1.4-4' }}</span></p>
+    <p><strong>Position prédite:</strong> <span class="value">🧭 {{ currentInstanceData.predicted_lat | number:'1.4-4'
+        }}, {{ currentInstanceData.predicted_lon | number:'1.4-4' }}</span></p>
+    <p><strong>Vitesse:</strong> <span class="value">🚦 {{ currentInstanceData.Speed_km_h | number:'1.1-1' }}
+        km/h</span></p>
+    <p><strong>Direction:</strong> <span class="value">🧭 {{ currentInstanceData.Direction | number:'1.0-0' }}°</span>
+    </p>
+    <p><strong>Obstacle:</strong> <span class="value">🚧 {{ currentInstanceData.Obstacle_Type || 'Aucun' }}</span></p>
+    <p><strong>Trafic:</strong> <span class="value">🚙 {{ currentInstanceData.Traffic_Density < 0 ?
+          currentInstanceData.Traffic_Density * -1 : currentInstanceData.Traffic_Density | number:'1.0-1' }}%</span>
+    </p>
+    <p><strong>Exit Probability:</strong> <span class="value">❗{{ currentInstanceData.exit_probability * 100 |
+        number:'1.0-1' }}%</span></p>
+    <p *ngIf="currentInstanceData.optimal_node_1"><strong>Optimal Node 1:</strong> <span class="value">✅ {{
+        currentInstanceData.optimal_node_1 }}</span></p>
+    <p *ngIf="currentInstanceData.optimal_node_2"><strong>Optimal Node 2:</strong> <span class="value">✅ {{
+        currentInstanceData.optimal_node_2 }}</span></p>
+    <p *ngIf="currentInstanceData.outside_zone" class="warning">⚠️ Le nœud principal est hors de sa zone de couverture.
+    </p>
+  </div>
 </div>
 
-</div>
+<style>
+  .info-card {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    min-width: 270px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    padding: 18px 22px;
+    font-size: 15px;
+    z-index: 1000;
+    border-left: 6px solid #1976d2;
+  }
+
+  .info-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: #1976d2;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .info-card .value {
+    font-weight: 500;
+    color: #333;
+  }
+
+  .info-card .warning {
+    color: #d32f2f;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .info-card p {
+    margin: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+</style>

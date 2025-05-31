@@ -17,4 +17,58 @@
     font-family: sans-serif;
     overflow-y: auto;
   }
-  
+  .info-card {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  max-width: 90%;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  color: #333333;
+  z-index: 1000;
+}
+
+.info-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+}
+
+.info-card h3::before {
+  content: "📍";
+  margin-right: 8px;
+}
+
+.info-card p {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.info-card p strong {
+  color: #2c3e50;
+}
+
+.info-card p span.value {
+  font-weight: bold;
+  color: #2980b9;
+}
+
+.info-card p.warning {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .info-card {
+    width: 90%;
+    right: 5%;
+    top: 20px;
+  }
+}

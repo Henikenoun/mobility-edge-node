@@ -7,7 +7,7 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PredictService {
-  private apiUrl = 'https://f3ea-34-169-121-194.ngrok-free.app'; // Remplace par ton URL
+  private apiUrl = 'https://59e2-34-74-100-180.ngrok-free.app'; // Remplace par ton URLng serve
 
   private headers = new HttpHeaders({
     'ngrok-skip-browser-warning': 'true'
@@ -45,5 +45,14 @@ export class PredictService {
         catchError(this.handleError)
       );
   }
+  getOptimalNodes(devicePrincipalZone: string): Observable<any[]> {
+  return this.getNodes().pipe(
+    map(nodes => nodes.filter((node: any) =>
+      node.zone === devicePrincipalZone && node.connection_loss === 0
+    )),
+    catchError(this.handleError)
+  );
+}
+
   
 }
