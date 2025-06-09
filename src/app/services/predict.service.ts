@@ -7,7 +7,7 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PredictService {
-  private apiUrl = 'https://f3ea-34-169-121-194.ngrok-free.app'; // Remplace par ton URL
+  private apiUrl = 'https://5bb8-34-85-230-133.ngrok-free.app'; // Remplace par ton URL
 
   private headers = new HttpHeaders({
     'ngrok-skip-browser-warning': 'true'

@@ -1,0 +1,17 @@
+<nav class="navbar">
+  <button
+    *ngFor="let node of nodes"
+    (click)="onNodeSelect(node.id)"
+    [class.selected]="node.id === selectedNodeId">
+    {{ node.role === 'device' ? 'device' : node.name }}
+  </button>
+  <button (click)="onMove()">return to simulation</button>
+</nav>
+
+<div *ngIf="selectedNodeId" class="charts-container">
+  <h2>Trajectoire Node: {{ selectedNodeId }}</h2>
+  <canvas id="trajectoryChart" width="800" height="400"></canvas>
+
+  <h2>Vitesse dans le temps Node: {{ selectedNodeId }}</h2>
+<canvas id="speedChart" width="600" height="300"></canvas>
+</div>

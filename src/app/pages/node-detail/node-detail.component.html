@@ -1,0 +1,33 @@
+<!-- <div class="p-8 animate__animated animate__fadeIn">
+  <h2 class="text-2xl font-bold mb-4">📍 Détails du nœud : {{ nodeId }}</h2>
+
+  <div *ngIf="historyData.length > 0">
+    <h3 class="text-xl font-semibold mb-2">Trajet (Lat / Lon)</h3>
+    <canvas baseChart
+      [data]="{
+        labels: timestamps,
+        datasets: [
+          { label: 'Latitude', data: latitudes, borderColor: 'blue', fill: false },
+          { label: 'Longitude', data: longitudes, borderColor: 'green', fill: false },
+          { label: 'Latitude Prédite', data: predLatitudes, borderColor: 'lightblue', borderDash: [5, 5], fill: false },
+          { label: 'Longitude Prédite', data: predLongitudes, borderColor: 'lightgreen', borderDash: [5, 5], fill: false }
+        ]
+      }"
+      [options]="lineChartOptions"
+      chartType="line">
+    </canvas>
+
+    <h3 class="text-xl font-semibold mt-6 mb-2">Vitesse réelle vs prédite</h3>
+    <canvas baseChart
+      [data]="{
+        labels: timestamps,
+        datasets: [
+          { label: 'Vitesse', data: speedData, borderColor: 'red', fill: false },
+          { label: 'Vitesse Prédite', data: predSpeedData, borderColor: 'orange', borderDash: [4, 2], fill: false }
+        ]
+      }"
+      [options]="lineChartOptions"
+      chartType="line">
+    </canvas>
+  </div>
+</div> -->

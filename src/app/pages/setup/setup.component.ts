@@ -97,6 +97,7 @@ nextNodeConfiguration() {
     };
 
     localStorage.setItem('simulation_config', JSON.stringify(config));
+    localStorage.setItem('indice', '114'); 
     this.router.navigate(['/map']);
   }
 }

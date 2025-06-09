@@ -16,12 +16,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NodeDetailComponent } from './pages/node-detail/node-detail.component';
+import { NgChartsModule } from 'ng2-charts';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Chart } from 'chart.js';
+// Chart.register(ChartDataLabels);
 
 @NgModule({
   declarations: [
     AppComponent,
     SetupComponent,
-    MapComponent
+    MapComponent,
+    DashboardComponent,
+    NodeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +43,12 @@ import { MatListModule } from '@angular/material/list';
     MatCardModule,
     MatRadioModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

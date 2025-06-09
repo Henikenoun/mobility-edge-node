@@ -27,6 +27,7 @@
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/animate.css/animate.min.css",
               "src/styles.css"
             ],
             "scripts": [
